@@ -8,6 +8,7 @@ const AllocationForm = (props) => {
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
+    const {currency} = useContext(AppContext);
 
     const submitEvent = () => {
 
@@ -39,10 +40,10 @@ const AllocationForm = (props) => {
             <div className='row'>
 
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                    <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
-                  </div>
-                  <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
+                <div className="input-group-prepend">
+                    <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
+                </div>
+                <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
                         <option defaultValue>Choose...</option>
                         <option value="Marketing" name="marketing"> Marketing</option>
                 <option value="Sales" name="sales">Sales</option>
@@ -60,6 +61,9 @@ const AllocationForm = (props) => {
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
 
+                
+                    <span style={{marginLeft:'2rem', marginRight:'-1rem', marginTop:'0.3rem'}}>{currency}</span>
+
                     <input
                         required='required'
                         type='number'
@@ -67,7 +71,8 @@ const AllocationForm = (props) => {
                         value={cost}
                         style={{ marginLeft: '2rem' , size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
-                        </input>
+                    </input>
+                
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
