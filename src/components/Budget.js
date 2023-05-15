@@ -6,6 +6,7 @@ import { AppContext } from '../context/AppContext';
 const Budget = () => {
  const { budget, expenses, dispatch } = useContext(AppContext);
  const [updatedBudget, setUpdatedBudget] = useState(budget);
+ const {currency} = useContext(AppContext);
 
 
  useEffect(() => {
@@ -49,7 +50,7 @@ const Budget = () => {
    <div className='alert alert-secondary'>
      <div className='input-group'>
        <div className='input-group-prepend'>
-         <span className='input-group-text'>Budget:</span>
+         <span className='input-group-text'>Budget: {currency}</span>
        </div>
        <input
          type='number'
