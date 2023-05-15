@@ -20,13 +20,6 @@ const Budget = () => {
    }, 0);
 
 
-   const remainingBudget = updatedBudget - totalExpenses;
-   dispatch({
-     type: 'SET_REMAINING',
-     payload: remainingBudget,
-   });
-
-
    if (updatedBudget > 20000) {
      alert('Budget cannot exceed 20,000!');
    }
@@ -40,9 +33,10 @@ const Budget = () => {
 
  const handleBudgetChange = (event) => {
    const value = parseInt(event.target.value);
-   if (!isNaN(value)) {
-     setUpdatedBudget(value);
-   }
+   dispatch({
+    type: 'SET_BUDGET',
+    payload: value,
+  });
  };
 
 
